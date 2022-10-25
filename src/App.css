@@ -1,0 +1,117 @@
+*{
+  margin:0px;
+  padding:0px;
+}
+.heading{
+ 
+  font-size: 20px;
+  text-align: center;
+  margin-top: 5px;
+}
+.headingbg{
+  background-color: blue;
+  width:100%;
+  height:40px;
+}
+
+
+/* ...........select............... */
+.div1{
+  margin-top: 10px;
+  margin-left: 5px;
+}
+.date{
+  width:170px;
+  height:30px;
+  margin-left: 5px;
+}
+.div2{
+  
+  margin:10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.div3{
+  
+  margin:10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+label{
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.div7{
+  width:50px;
+  margin-top:20px;
+  
+}
+
+ .select{
+  width:100px;
+  margin-left: 5px;
+  
+}
+.form-inline{
+  display: flex;
+  flex-wrap: wrap;
+}
+.div6{
+  
+  margin:10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.buttonadd{
+  width:50px;
+  background-color: blue;
+  color: azure;
+  border-radius: 5px;
+}
+.div7{
+  
+  margin:10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.buttonremove{
+  width:50px;
+  background-color: red;
+  color: azure;
+  border-radius: 5px;
+}
+.submit{
+  background-color: darkgreen;
+  width:80px;
+  height: 30px;
+  padding-left:10px;
+  margin-left:20px;
+  border-radius: 5px;
+  color: azure;
+  
+} 
+.div4{
+  
+  margin:10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.div5{
+  
+  margin:10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.div6{
+  
+  margin:10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.dms{
+  width:100px;
+  margin-left: 5px;
+  
+}
