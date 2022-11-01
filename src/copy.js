@@ -16,9 +16,9 @@ const options1 = [
   { value: "delhi", label: "delhi" },
 ];
 export default function App() {
-  const{register,handleSubmit,errors}=useForm();
+//  const{register,handleSubmit,errors}=useForm();
   const onSubmit = data => console.log(data);
-const [input,setInput]=useState([{date:"",username:"",state1:""}]);
+  const [input,setInput]=useState([{date:"",username:"",state1:""}]);
   function handleinputchange(e,index){
   const {name,value}=e.target;
   const list=[...input];
@@ -59,8 +59,7 @@ const [input,setInput]=useState([{date:"",username:"",state1:""}]);
     {
      input.length!==1&& 
     <button className="button add" type="button" onClick={() => removeinputField(i)}>-</button>
-   
-    }
+   }
     {
       input.length-1===i&& 
 

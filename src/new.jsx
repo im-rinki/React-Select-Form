@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, cloneElement } from "react";
 import Select from "react-select";
 import "./App.css";
-import { useFormik } from "formik";
-import { Vaildation } from "./Vaildation";
-import Multiselect from "multiselect-react-dropdown";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+import { useForm } from "react-hook-form";
+import csc from "country-state-city";
 const options = [
   { value: "rinki", label: "rinki" },
   { value: "abc", label: "abc" },
@@ -16,15 +18,14 @@ const options1 = [
   { value: "gurgaon", label: "gurgaon" },
   { value: "delhi", label: "delhi" },
 ];
-const initialValues = {
-  date: "",
-  // state: "",
-  // sitename: "",
-  dms: "",
-  dmsloss: "",
-  revenue: "",
-};
+
 export default function App() {
+  // const [date, setDate] = useState("");
+  const [dms, setDms] = useState("");
+  const [dmsloss, setDmsloss] = useState("");
+  const [revenue, setRevnue] = useState("");
+  const [date, setDate] = useState("");
+  const [input, setInput] = useState([{ state: "", sitename: "" }]);
   const handleinputchange2 = (e, index) => {
     const list = [...input];
     console.log("index", index);
@@ -35,39 +36,15 @@ export default function App() {
     setInput(list);
     console.log("input", input);
   };
-  const [input, setInput] = useState([{ state: "", sitename: "" }]);
-  const [error, setError] = useState(false);
-
-  const { values, errors, handleChange, handleSubmit, touched } = useFormik({
-    initialValues: initialValues,
-    validationSchema: Vaildation,
-
-    onSubmit: (values) => {
-      // handle form submission
-      console.log(values);
-      console.log(errors);
-    },
-  });
-
+ 
+  
   function addinputField() {
-    setInput([
-      ...input,
-      { date: "", state: "", sitename: "", dms: "", dmsloss: "", revenue: "" },
-    ]);
+    setInput([...input, { date:"",state: "", sitename: "",dms: "",dmsloss: "",revenue: "" }]);
   }
   function removeinputField(e, index) {
     const list = [...input];
     list.splice(index, 1);
     setInput(list);
-  }
-  // function handleChange(val){
-  //   console.log(val.target.value);
-  // }
-  function savedata(e) {
-    if (input.value == "") {
-      // alert("require");
-      setError(true);
-    }
   }
   return (
     <>
@@ -76,7 +53,7 @@ export default function App() {
           <h2>Form</h2>
         </div>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form>
         {input.map((x, i) => {
           return (
             <div className="form-inline" key={i}>
@@ -86,97 +63,99 @@ export default function App() {
                   type="date"
                   name="date"
                   className="inputdate"
-                  value={values.date}
-                  onChange={handleChange}
+                  onChange={(e) => setDate(e.target.value)}
                 />
-                {errors.date && touched.date ? (
-                  <p className="errormsg">{errors.date}</p>
-                ) : null}
-              </div>
-
+             
+                  
+                </div>
+              
+          
               <div className="div2">
-                
                 <label>State</label>
                 <Select
-                  isMulti
                   options={options}
                   name="state"
                   className="select"
-                  value={values.state}
-                  multiple={true}
+                  //  onChange={(e) => handleinputchange2(e, i)}
+                  // onChange={handleinputchange2}
                   onChange={(e) => handleinputchange2(e, i)}
-                  //  onChange={handleChange}
                 />
+                <div className="errormsg">
+                  {error && input.length <= 0 ? (
+                    <label className="vaildation">this field is require</label>
+                  ) : (
+                    ""
+                  )}
+                </div>
               </div>
-              {/* {errors.state && touched.state ? (<p className="errormsg">{errors.state}</p>) : null} */}
-
-              <div className="errormsg">
-                {error && input.length <= 0 ? (
-                  <label className="vaildation">This field is require</label>
-                ) : (
-                  ""
-                )}
-              </div>
+              
               <div className="div3">
                 <label>Sitename</label>
                 <Select
-                  isMulti
                   options={options1}
                   name="sitename"
                   className="select"
-                  value={values.sitename}
-                  multiple={true}
                   onChange={(e) => handleinputchange2(e, i)}
-                  //  onChange={handleChange}
-                ></Select>
-                {errors.sitename && touched.sitename ? (
-                  <p className="errormsg">{errors.sitename}</p>
-                ) : null}
+                />
+                <div className="errormsg">
+                  {error && input.length <= 0 ? (
+                    <label className="vaildation">this field is require</label>
+                  ) : (
+                    ""
+                  )}
+                </div>
               </div>
               <div className="div4">
                 <label>DMS</label>
                 <input
                   type="text"
                   className="dms"
-                  name="dms"
                   placeholder="enter the dms"
-                  value={values.dms}
-                  onChange={handleChange}
+                  onChange={(e) => setDms(e.target.value)}
                 ></input>
-                {errors.dms && touched.dms ? (
-                  <p className="errormsg">{errors.dms}</p>
-                ) : null}
+                
               </div>
-
+              <div className="errormsg">
+                  {error && dms.length <= 0 ? (
+                    
+                    <label className="vaildation">this field is require</label>
+                    
+                     ) : (
+                    ""
+                  )}
+                </div>
               <div className="div5">
                 <label>DMS Loss %</label>
                 <input
                   type="text"
-                  name="dmsloss"
                   className="dms"
                   placeholder="enter the dms loss"
-                  value={values.dmsloss}
-                  onChange={handleChange}
+                  onChange={(e) => setDmsloss(e.target.value)}
                 ></input>
-                {errors.dmsloss && touched.dmsloss ? (
-                  <p className="errormsg">{errors.dmsloss}</p>
-                ) : null}
+                <div className="errormsg">
+                  {error && dmsloss.length <= 0 ? (
+                    <label className="vaildation">this field is require</label>
+                  ) : (
+                    ""
+                  )}
+                </div>
               </div>
               <div className="div6">
                 <label>Revenue</label>
                 <input
                   type="text"
                   className="dms"
-                  name="revenue"
                   placeholder="enter the revenue"
-                  value={values.revenue}
-                  onChange={handleChange}
+                  onChange={(e) => setRevnue(e.target.value)}
                 ></input>
-                {errors.revenue && touched.revenue ? (
-                  <p className="errormsg">{errors.revenue}</p>
-                ) : null}
+                <div className="errormsg">
+                  {error && revenue.length <= 0 ? (
+                    <label className="vaildation">this field is require</label>
+                  ) : (
+                    ""
+                  )}
+                </div>
               </div>
-
               <div className="div7">
                 {input.length !== 1 && (
                   <button
@@ -203,12 +182,7 @@ export default function App() {
           );
         })}
         <div className="button">
-          <button
-            className="button submit"
-            type="submit"
-            value="submit"
-            onClick={savedata}
-          >
+          <button className="button submit" type="submit" onClick={savedata}>
             Submit
           </button>
         </div>

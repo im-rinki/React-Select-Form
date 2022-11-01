@@ -13,34 +13,45 @@
   width:100%;
   height:40px;
 }
-
-
+.vaildation{
+  color:red;
+  /* display: flex; */
+  
+}
+.errormsg{
+  text-align: center;
+  color:red;
+} 
 /* ...........select............... */
-.div1{
+.date{
   margin-top: 10px;
   margin-left: 5px;
+   display: flex; 
+flex-direction: column;
 }
-.date{
-  width:170px;
+.inputdate{
+  width:150px;
   height:30px;
   margin-left: 5px;
+ 
 }
 .div2{
-  
+  flex-direction: column;
   margin:10px;
   display: flex;
-  flex-wrap: wrap;
+  
 }
 .div3{
   
   margin:10px;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 label{
-  text-align: center;
-  margin-top: 10px;
+  margin-top: 5px;
   font-weight: bold;
+  margin-left: 5px;
+  text-align: center;
 }
 
 .div7{
@@ -50,34 +61,47 @@ label{
 }
 
  .select{
-  width:100px;
+  width:150px;
   margin-left: 5px;
-  
+  height:40px;
 }
 .form-inline{
   display: flex;
-  flex-wrap: wrap;
+
+  
 }
 .div6{
   
   margin:10px;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 .buttonadd{
-  width:50px;
+  width:30px;
+  height:30px;
   background-color: blue;
   color: azure;
   border-radius: 5px;
 }
 .div7{
   
-  margin:10px;
-  display: flex;
-  flex-wrap: wrap;
+  margin-left:5px;
+  
+  margin-top:30px;
+  /* display: flex; */
+ 
+}
+.div8{
+  
+  margin-left:5px;
+  margin-right:10px;
+  margin-top:30px;
+  /* display: flex; */
+  
 }
 .buttonremove{
-  width:50px;
+  width:30px;
+  height:30px;
   background-color: red;
   color: azure;
   border-radius: 5px;
@@ -93,25 +117,25 @@ label{
   
 } 
 .div4{
-  
-  margin:10px;
+  margin: 10px;
+   margin-left: 5px; 
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 .div5{
-  
   margin:10px;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 .div6{
-  
+  flex-direction: column;
   margin:10px;
   display: flex;
-  flex-wrap: wrap;
+  
 }
 .dms{
-  width:100px;
+  width:150px;
+  height:30px;
   margin-left: 5px;
   
 }
